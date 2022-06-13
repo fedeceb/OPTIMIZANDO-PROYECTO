@@ -38,13 +38,13 @@ function crearTitulo()
     document.body.appendChild(tituloH1);
 }
 
-function crearMenu() //CREAR DIV ACA!!!
+function crearMenu() 
 {
     const opciones = ["SHOP", "TICKETS","REGISTRARSE"]
     opciones.forEach((opcion)=>{
         const boton = document.createElement("button");
 
-        if (opciones === "SHOP")
+        if (opcion === "SHOP")
         {
             boton.addEventListener("click", ()=>{
                 listaShop ();
@@ -58,10 +58,12 @@ function crearMenu() //CREAR DIV ACA!!!
             })
         }
 
-        /*if (opcion === "REGISTRARSE")
+        else if (opcion === "REGISTRARSE")
         {
-
-        }*/
+            boton.addEventListener("click", ()=>{
+                registroUsuario();
+            })
+        }
 
         boton.innerHTML = opcion;
         document.body.appendChild(boton);
@@ -86,3 +88,19 @@ function buscarProds ()
 
     let encontrados = productos.filter((producto) => producto.model.toLowerCase().indexOf(model.toLocaleLowerCase())!==-1);
 }
+
+function registroUsuario ()
+{
+    let datoNombre = prompt("Ingresa tu nombre y apeliido");
+    localStorage.setItem("NOMBRE Y APELLIDO", datoNombre);
+
+    let datoUsuario = prompt("Ingresa tu usuario");
+    localStorage.setItem("USER", datoUsuario);
+
+    let datoMail = prompt("Ingresa mail");
+    localStorage.setItem("MAIL", datoMail);
+
+    let datoContraseña = Number(prompt("Ingresa contraseña (solo numerica)"));
+    localStorage.setItem("CLAVE", datoContraseña);
+}
+
